@@ -13,8 +13,7 @@ type MouseLocation = {
 }
 
 function startCapture(displayMediaOptions: DisplayMediaStreamOptions | undefined) {
-  return navigator.mediaDevices
-    .getDisplayMedia(displayMediaOptions)
+  return navigator.mediaDevices?.getDisplayMedia(displayMediaOptions)
     .catch((err) => {
       console.error(err);
       return null;
@@ -29,7 +28,7 @@ function App() {
 
   createEffect(async () => {
     await invoke('start_recording')
-    // const mediaStream = startCapture({ video: true, audio: false })
+    const mediaStream = startCapture({ video: true, audio: false })
     const unlisten = await listen<MouseLocation>('mouse_location', (event) => {
       // console.log(event)
       // event.event is the event name (useful if you want to use a single callback fn for multiple event types)

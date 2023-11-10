@@ -1,7 +1,10 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+use base64::{ Engine, engine::general_purpose};
+use screenshots::Screen;
 use autopilot::mouse;
 use tauri::{Window};
+use std::thread;
 
 
 #[derive(Clone, serde::Serialize)]
